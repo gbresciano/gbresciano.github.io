@@ -1,1 +1,308 @@
-hello index
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Description." />
+    <meta name="author" content="Guillermo Bresciano" />
+    <meta content="Mavericks" property="og:title" />
+    <meta content="Description." name="description" />
+    <meta content="Description." property="og:description" />
+    <meta content="https://www.barmavericks.com/" property="og:url" />
+    <meta content="Mavericks" property="og:site_name" />
+    <meta content="img/preview.jpg" property="og:image" />
+    
+    <!-- arranca crikle convert -->
+    <script
+        type="text/javascript"
+        id="crikle-convert-script-loader"
+        async
+        defer
+        src="https://app.crikle.com/scripts/convert/c33e19c5-b4a2-4bdf-bb0c-3d89f589de4a.js"
+    ></script>
+
+    <!-- arranca ios web app -->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <link href="img/apple-icon-180x180.png" rel="apple-touch-icon" />
+    <script>
+      function BlockElasticScroll(event) {
+        event.preventDefault();
+      }
+    </script>
+    <meta content="Mavericks" name="apple-mobile-web-app-title" />
+    <!-- termina ios web app -->
+
+    <link rel="icon" type="image/svg+xml" sizes="any" href="https://guillob.weebly.com/uploads/2/2/9/5/2295820/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="https://guillob.weebly.com/uploads/2/2/9/5/2295820/favicon.ico" />
+
+    <title>Mavericks</title>
+
+    <!-- load jQuery library -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Personalized CSS -->
+    <link href="css/mavericks_photos.css" rel="stylesheet" />
+
+    <!-- lightbox -->
+    <link href="css/blueimp-gallery.css" rel="stylesheet" />
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet" />
+
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Play|Special+Elite|Raleway" rel="stylesheet" />
+
+    <!--animate on scroll-->
+    <link href="css/animate.css" rel="stylesheet" />
+    <script src="js/wow.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+
+    <!-- change header size on scroll -->
+    <script type="text/javascript">
+      $(document).on("scroll", function () {
+        if ($(document).scrollTop() > 5) {
+          $("#landing-slot").removeClass("large").addClass("small");
+          $(".arrow-link").css("visibility", "hidden");
+          $("#like-button").css("visibility", "hidden");
+        } else {
+          $("#landing-slot").removeClass("small").addClass("large");
+          $(".arrow-link").css("visibility", "visible");
+          $("#like-button").css("visibility", "visible");
+        }
+      });
+    </script>
+
+    <!-- hide navbar on on scroll down   -->
+    <script type="text/javascript">
+      var didScroll;
+      var lastScrollTop = 0;
+      var delta = 5;
+      var navbarHeight = $("nav").outerHeight();
+
+      $(window).scroll(function (event) {
+        didScroll = true;
+      });
+
+      setInterval(function () {
+        if (didScroll) {
+          hasScrolled();
+          didScroll = false;
+        }
+      }, 250);
+
+      function hasScrolled() {
+        var st = $(this).scrollTop();
+
+        // Make sure they scroll more than delta
+        if (Math.abs(lastScrollTop - st) <= delta) return;
+
+        // If they scrolled down and are past the navbar, add class .nav-up.
+        // This is necessary so you never see what is "behind" the navbar.
+        if (st > lastScrollTop && st > navbarHeight) {
+          // Scroll Down
+          $("nav").addClass("navbar-hidden");
+        } else {
+          // Scroll Up
+          if (st + $(window).height() < $(document).height()) {
+            $("nav").removeClass("navbar-hidden");
+          }
+        }
+
+        lastScrollTop = st;
+      }
+    </script>
+
+    <!--stop audio when another starts-->
+    <script type="text/javascript">
+      document.addEventListener(
+        "play",
+        function (e) {
+          var audios = document.getElementsByTagName("audio");
+          for (var i = 0, len = audios.length; i < len; i++) {
+            if (audios[i] != e.target) {
+              audios[i].pause();
+            }
+          }
+        },
+        true
+      );
+    </script>
+
+    <!--fade overlay after load-->
+    <script type="text/javascript">
+      $(window).load(function () {
+        $("#overlay").fadeOut("slow");
+        $("#pre-scroll").css("height", 0);
+      });
+    </script>
+
+    <!--smooth scroll to anchor-->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // Add smooth scrolling to all links
+        $("a").on("click", function (event) {
+          if ($("#landing-slot.large")[0]) {
+            var extra_height = $("#landing-slot").height() / 2;
+          } else {
+            var extra_height = 0;
+          }
+
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $("html, body").animate(
+              {
+                scrollTop: $(hash).offset().top - extra_height - 60,
+              },
+              300,
+              function () {
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              }
+            );
+          } // End if
+        });
+      });
+    </script>
+
+    <!--google analytics-->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+
+      ga("create", "UA-84363579-3", "auto");
+      ga("send", "pageview");
+    </script>
+  </head>
+
+  <body>
+    <!-- navbar starts here-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div id="strech-margin" class="small"></div>
+      <div id="strech-border" class="container-fluid small">
+        <div class="navbar-header">
+          <img
+            style="margin: 10px; height: 30px; -webkit-filter: invert(1); filter: invert(1)"
+            class="small"
+            src="https://guillob.weebly.com/uploads/2/2/9/5/2295820/logo_mav.svg"
+          />
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <a href="https://instagram.com/BarMavericks" target="_blank" title="instagram" style="padding: 10px"> <img src="img/instagram.png" /></a>
+            <a href="https://twitter.com/BarMavericks" target="_blank" title="twitter" style="padding: 10px"> <img src="img/twitter.png" /></a>
+            <a href="https://facebook.com/BarMavericks" target="_blank" title="facebook" style="padding: 10px"> <img src="img/facebook.png" /></a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <!-- landing slot-->
+      <div class="row landing-section gradient-background">
+        <div>
+          <div id="landing-slot" class="center-block flex-center-xs large">
+            <div id="like-button" class="facebook center-block" style="margin-top: 70vh">
+              <iframe
+                src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FBarMavericks&width=84&layout=button_count&action=like&show_faces=false&share=false&height=21"
+                width="84"
+                height="21"
+                style="border: none; overflow: hidden"
+                scrolling="no"
+                frameborder="0"
+                allowTransparency="true"
+              ></iframe>
+            </div>
+          </div>
+
+          <div>
+            <a class="arrow-link" href="#features"><i class="glyphicon glyphicon-menu-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- features-->
+      <div id="features" class="row">
+        <div class="center-block wow fadeInUp" style="max-width: 1000px; overflow: hidden">
+          <h1 class="subtitle fancy"><span>Photos</span></h1>
+
+          <div class="container-fluid">
+            <div class="row" id="links"></div>
+          </div>
+
+          <div id="blueimp-gallery" class="blueimp-gallery">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="close">×</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+          </div>
+
+          <script type="text/javascript" src="js/mavericks_photos.js"></script>
+        </div>
+      </div>
+
+      <!-- about-->
+      <div id="about" class="row footer-row">
+        <div class="center-block footer-container"></div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="website-footer">
+      &copy;
+      <script>
+        document.write(" " + new Date().getFullYear());
+      </script>
+      , Mavericks. All rights reserved.
+    </div>
+
+    <!-- Lightbox -->
+    <script src="js/blueimp-gallery.min.js"></script>
+    <script type="text/javascript">
+      document.getElementById("links").onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
+          link = target.src ? target.parentNode : target,
+          options = { index: link, event: event, hidePageScrollbars: false, toggleControlsOnSlideClick: false },
+          links = this.getElementsByTagName("a");
+        blueimp.Gallery(links, options);
+      };
+    </script>
+
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
