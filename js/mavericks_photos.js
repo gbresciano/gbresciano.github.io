@@ -3,8 +3,6 @@ const renderPhotos = async () => {
 
   const images = await fetch("./gallery/index.json").then(r => r.json());
 
-  const doc = new DOMParser().parseFromString(html, "text/html");
-
   const galleryNode = document.getElementById("links");
 
   for (const image of images) {
