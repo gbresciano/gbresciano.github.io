@@ -1,5 +1,13 @@
 const renderPhotos = async () => {
-  const photoArray = await fetch("/gallery/index").then(res => res.json());
+  const html = await fetch("/gallery/").then(r => r.text());
+
+  const doc = new DOMParser().parseFromString(html, "text/html");
+
+  const photoArray = [...doc.querySelectorAll("a")]
+
+    .map(a => a.getAttribute("href"))
+
+    .filter(file => /\.(png|jpe?g|gif|webp|svg)$/i.test(file));
   const galleryNode = document.getElementById("links");
 
   photoArray.forEach(photoUrl => {
