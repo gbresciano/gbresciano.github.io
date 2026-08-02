@@ -1,6 +1,4 @@
 const renderPhotos = async () => {
-  const gallery = document.getElementById("gallery");
-
   const images = await fetch("./gallery/index.json").then(r => r.json());
 
   const galleryNode = document.getElementById("links");
